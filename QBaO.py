@@ -16,6 +16,7 @@ import json
 import jieba.posseg
 
 DEFAULT_P = 0.9
+DEFAULT_P_insult = 0.2
 suffix_words = ['个屁', '个头', '个几把', '个鬼', '个卵']
 character_replacement_data = dict()
 
@@ -53,14 +54,16 @@ def main():
     load_char_replace_data()
     print("你好，我是练习时长两年半的Q宝，一起来聊天吧！")
     while True:
-        output = ''
         text = input("我：")
         if random.random() < DEFAULT_P:
-            if random.randint(0, 10) > 5:
+            if random.random() > DEFAULT_P_insult:
                 output = generate_insult_text(text)
             else:
                 output = generate_repeat_text(text)
-            print(output)
+            if output is None:
+                continue
+            else:
+                print(output)
         else:
             print("你说啥我没听清~")
 
