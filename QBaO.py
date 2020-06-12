@@ -53,13 +53,13 @@ def main():
     load_char_replace_data()
     print("你好，我是练习时长两年半的Q宝，一起来聊天吧！")
     while True:
-        output = str()
+        output = ''
         text = input("我：")
         if random.randint(0, 10) < DEFAULT_P * 10:
             if random.randint(0, 10) > 5:
-                output = f'{"Q宝:"}{generate_insult_text(text)}'
+                output = generate_insult_text(text)
             elif random.randint(0, 10) <= 5:
-                output = f'{"Q宝:"}{generate_repeat_text(text)}'
+                output = generate_repeat_text(text)
             print(output)
         else:
             print("你说啥我没听清~")
